@@ -4,6 +4,7 @@ package seminar_01;
 import java.util.Scanner;
 
 public class task_1 {
+
     public static void main(String[] args) {
         Scanner iScanner = new Scanner(System.in);
         System.out.printf("Введите n: ");
