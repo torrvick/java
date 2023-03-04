@@ -1,3 +1,4 @@
+// Задача 3. Реализовать простой калькулятор
 package seminar_01;
 
 import java.util.Scanner;
