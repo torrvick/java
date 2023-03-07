@@ -17,7 +17,8 @@ public class task_2 {
     }
 
     public static void readFile() throws IOException {
-        File file = new File("seminar_02/students.txt");
+        String workDir = System.getProperty("user.dir");
+        File file = new File(workDir.concat("/seminar_02/students.txt"));
         BufferedReader reader = new BufferedReader(new FileReader(file));
         for (String student = reader.readLine(); student!= null; student = reader.readLine()) {
             String[] grade = student.split(",");
