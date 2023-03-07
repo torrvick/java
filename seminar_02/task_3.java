@@ -11,12 +11,12 @@ public class task_3 {
         System.out.print("Введите строку: ");
         String inputString = iScanner.nextLine();
         iScanner.close();
-        inputString = inputString.toLowerCase().replaceAll(" ", "");
         if (isPalindrome(inputString)) System.out.println("Эта строка - палиндром");
         else System.out.println("Эта строка - не является палиндромом");
     }
 
     public static boolean isPalindrome(String inputString) {
+        inputString = inputString.toLowerCase().replaceAll(" ", "");
         for (int i = 0; i < inputString.length()/2; i++) {
             if (inputString.charAt(i) != inputString.charAt(inputString.length()-i-1)) {
                 return false;
