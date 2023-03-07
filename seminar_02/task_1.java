@@ -35,8 +35,8 @@ public class task_1 {
         fHandler.setFormatter(sFormat);
         String logString = "";
 
-        for (int i = 0; i < array.length - 1; i++) {
-            for(int j = 0; j < array.length - i - 1; j++) {
+        for (int i = 0; i < array.length-1; i++) {
+            for(int j = 0; j < array.length-i-1; j++) {
                 if(array[j + 1] < array[j]) {
                     logString = Arrays.toString(array) + "\npos(" + j + ") => pos(" + String.valueOf(j+1) + ")   :   " + array[j] + " => " + array[j+1] + "\n"; 
                     int temp = array[j];
