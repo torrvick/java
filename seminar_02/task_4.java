@@ -9,6 +9,14 @@ import java.util.logging.SimpleFormatter;
 
 public class task_4 {
     public static void main(String[] args) throws IOException {
+        Logger logger = Logger.getLogger(task_1.class.getName());
+        String workDir = System.getProperty("user.dir");
+        FileHandler fHandler = new FileHandler(workDir.concat("/seminar_02/task_4.log"), true);
+        logger.addHandler(fHandler);
+        logger.setUseParentHandlers(false);
+        SimpleFormatter sFormat = new SimpleFormatter();
+        fHandler.setFormatter(sFormat);
+
         Scanner iScanner = new Scanner(System.in);
         System.out.print("Введите a: ");
         int a = iScanner.nextInt();
@@ -17,15 +25,18 @@ public class task_4 {
         System.out.print("Введите b: ");
         int b = iScanner.nextInt();
         iScanner.close();
-        System.out.printf("Результат вычисления равен %s", calc(a, b, op));
+        String result = calc(a, b, op);
+        System.out.printf("Результат вычисления равен %s", result);
 
-        Logger logger = Logger.getLogger(task_1.class.getName());
-        String workDir = System.getProperty("user.dir");
-        FileHandler fHandler = new FileHandler(workDir.concat("/seminar_02/task_4.log"), true);
-        logger.addHandler(fHandler);
-        logger.setUseParentHandlers(false);
-        SimpleFormatter sFormat = new SimpleFormatter();
-        fHandler.setFormatter(sFormat);
+        StringBuilder logString = new StringBuilder();
+        logString.append("Для операции ")
+                .append(a).append(op).append(b)
+                .append(" результат вычисления равен ")
+                .append(result)
+                .append("\n");
+
+        logger.info(logString.toString());
+
     }
 
     public static String calc(int a, int b, char op) {
