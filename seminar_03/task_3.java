@@ -1,4 +1,4 @@
-// Задача 2. Задан целочисленный список ArrayList. Найти минимальное, максимальное и среднее ариф. из этого списка.
+// Задача 3. Задан целочисленный список ArrayList. Найти минимальное, максимальное и среднее ариф. из этого списка.
 package seminar_03;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class task_3 {
         ArrayList<Integer> array = new ArrayList<>();
         Random random = new Random();
         for (int i = 0; i < size; i++) {
-            array.add(random.nextInt(min, max));
+            array.add(random.nextInt(min, max + 1));
         }
         return array;
     }

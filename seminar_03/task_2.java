@@ -17,7 +17,7 @@ public class task_2 {
         ArrayList<Integer> array = new ArrayList<>();
         Random random = new Random();
         for (int i = 0; i < size; i++) {
-            array.add(random.nextInt(min, max));
+            array.add(random.nextInt(min, max + 1));
         }
         return array;
     }
