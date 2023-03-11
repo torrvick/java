@@ -7,10 +7,10 @@ import java.util.Random;
 
 public class task_2 {
     public static void main(String[] args) {
-        ArrayList<Integer> newArray = getRandArray(20, 0, 10);
-        System.out.printf("\nИсходный список: \n%s\n\n", newArray);
-        removeEven(newArray);
-        System.out.printf("Список без чётных чисел: \n%s\n\n", newArray);
+        ArrayList<Integer> intArray = getRandArray(20, 0, 10);
+        System.out.printf("\nИсходный список: \n%s\n\n", intArray);
+        removeEven(intArray);
+        System.out.printf("Список без чётных чисел: \n%s\n\n", intArray);
     }
 
     static ArrayList<Integer> getRandArray(int size, int min, int max) {
