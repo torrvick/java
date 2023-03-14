@@ -7,26 +7,26 @@ import java.util.Random;
 
 public class task_1 {
     public static void main(String[] args) {
-        LinkedList<Integer> intArray = getRandArray(10, 0, 10);
-        System.out.printf("\nИсходный список:\n%s\n\n",intArray);
-        LinkedList<Integer> reversedArray = listReverse(intArray);
-        System.out.printf("Перевернутый список:\n%s\n\n",reversedArray);
+        LinkedList<Integer> intList = getRandList(10, 0, 10);
+        System.out.printf("\nИсходный список:\n%s\n\n",intList);
+        LinkedList<Integer> reversedList = listReverse(intList);
+        System.out.printf("Перевернутый список:\n%s\n\n",reversedList);
     }
 
     static LinkedList<Integer> listReverse(LinkedList<Integer> list) {
+        LinkedList<Integer> reversedList = new LinkedList<>();
         for (int i = 0; i < list.size(); i++) {
-            list.add(i, list.getLast());
-            list.pollLast();
+            reversedList.add(list.get(list.size()-i-1));
         }
-        return list;
+        return reversedList;
     }
 
-    static LinkedList<Integer> getRandArray(int size, int min, int max) {
-        LinkedList<Integer> array = new LinkedList<>();
+    static LinkedList<Integer> getRandList(int size, int min, int max) {
+        LinkedList<Integer> list = new LinkedList<>();
         Random random = new Random();
         for (int i = 0; i < size; i++) {
-            array.add(random.nextInt(min, max + 1));
+            list.add(random.nextInt(min, max + 1));
         }
-        return array;
+        return list;
     }
 }
