@@ -23,11 +23,9 @@ public class task_2 {
         List<Map.Entry<String, Integer>> peopleCountSorted = new ArrayList<>(peopleCount.entrySet());
         peopleCountSorted.sort(Map.Entry.comparingByValue());
 
-        
         for (int i = peopleCountSorted.size() - 1; i >= 0; i--) {
             System.out.println(peopleCountSorted.get(i));
         }
-
     }
     
     static ArrayList<String> getArray() {
