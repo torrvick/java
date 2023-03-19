@@ -59,7 +59,7 @@ public class task_3 {
             return true;
         }
 
-        for (int col = 0; col < desk.length; col++) {
+        for (int col = 0; col < desk[row].length; col++) {
             if (isClean(row, col, desk)) {
                 desk[row][col] = 'X';
                 if (placeQueens(desk, row + 1)) {
