@@ -1,7 +1,5 @@
 package seminar_06;
 
-import java.util.Random;
-
 public class notebook {
     private String manufacture;
     private String model;
@@ -15,7 +13,6 @@ public class notebook {
 
 
     public notebook() {
-        setRandColor();
     }
 
     public notebook(String manufacture, String model, double screenSize, String cpu, int ram, int storage, String os, double weight, String color) {
@@ -102,11 +99,6 @@ public class notebook {
         this.color = color;
     }
 
-    private void setRandColor() {
-        String[] colors = {"Белый", "Серый", "Черный"};
-        this.color = colors[new Random().nextInt(3)];
-    }
-
     @Override
     public String toString() {
         return "{" +
@@ -119,9 +111,7 @@ public class notebook {
             ", os='" + getOs() + "'" +
             ", weight='" + getWeight() + "'" +
             ", color='" + getColor() + "'" +
-            "}";
+            " }";
     }
-
-    
 
 }
