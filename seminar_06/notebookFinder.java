@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
-
-
 public class notebookFinder {
     public static final int ROWS_PER_PAGE = 10;
     public static Scanner iScanner = new Scanner(System.in, "cp866");
