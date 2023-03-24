@@ -3,7 +3,9 @@ package seminar_06;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class notebook {
     private String manufacture;
@@ -152,6 +154,27 @@ public class notebook {
         }
         br.close();
         return notebooks;
+    }
+
+    static public List<notebook> filter(List<notebook> notebooks, HashMap<String,String> params) throws Exception {
+        List<notebook> filtered = new ArrayList<>();
+        for (notebook elem : notebooks) {
+            boolean checked = true;
+            for (Map.Entry<String, String> param : params.entrySet()) {
+                switch (param.getKey()) {
+                    case "manufacture": checked &= elem.getManufacture().toLowerCase().contains(param.getValue().toLowerCase()); break;
+                    case "screenSize": checked &= (elem.getScreenSize() >= Double.parseDouble(param.getValue())); break;
+                    case "cpu": checked &= (elem.getCpu().toLowerCase().contains(param.getValue().toLowerCase())); break;
+                    case "ram": checked &= (elem.getRam() >= Integer.parseInt(param.getValue())); break;
+                    case "storage": checked &= (elem.getStorage() >= Integer.parseInt(param.getValue())); break;
+                    case "os": checked &= elem.getOs().toLowerCase().contains(param.getValue().toLowerCase()); break;
+                    case "weight": checked &= (elem.getWeight() <= Double.parseDouble(param.getValue())); break;
+                    case "color": checked &= elem.getColor().toLowerCase().contains(param.getValue().toLowerCase()); break;
+                }
+            }
+            if (checked) filtered.add(elem);
+        }
+        return filtered;
     }
 
 }

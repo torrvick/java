@@ -20,7 +20,7 @@ public class notebookFinder {
     }
 
     static void showFiltered(List<notebook> notebooks, HashMap<String,String> params, String header) throws Exception{
-        List<notebook> filtered = filterNotebooks(notebooks, params);
+        List<notebook> filtered = notebook.filter(notebooks, params);
         int rowsCount = 0;
         clearScreen();
         String tableHeader = String.format("%-10s %-23s %-7s %-30s %-5s %-6s %-10s %-6s %-10s",
@@ -56,27 +56,6 @@ public class notebookFinder {
                 rowsCount = 0;
             }
         }
-    }
-
-    static List<notebook> filterNotebooks(List<notebook> notebooks, HashMap<String,String> params) throws Exception {
-        List<notebook> filtered = new ArrayList<>();
-        for (notebook elem : notebooks) {
-            boolean checked = true;
-            for (Map.Entry<String, String> param : params.entrySet()) {
-                switch (param.getKey()) {
-                    case "manufacture": checked &= elem.getManufacture().toLowerCase().contains(param.getValue().toLowerCase()); break;
-                    case "screenSize": checked &= (elem.getScreenSize() >= Double.parseDouble(param.getValue())); break;
-                    case "cpu": checked &= (elem.getCpu().toLowerCase().contains(param.getValue().toLowerCase())); break;
-                    case "ram": checked &= (elem.getRam() >= Integer.parseInt(param.getValue())); break;
-                    case "storage": checked &= (elem.getStorage() >= Integer.parseInt(param.getValue())); break;
-                    case "os": checked &= elem.getOs().toLowerCase().contains(param.getValue().toLowerCase()); break;
-                    case "weight": checked &= (elem.getWeight() <= Double.parseDouble(param.getValue())); break;
-                    case "color": checked &= elem.getColor().toLowerCase().contains(param.getValue().toLowerCase()); break;
-                }
-            }
-            if (checked) filtered.add(elem);
-        }
-        return filtered;
     }
 
     static void mainMenu() throws Exception{
