@@ -98,22 +98,16 @@ public class notebookFinder {
         for (notebook elem : notebooks) {
             boolean checked = true;
             for (Map.Entry<String, String> param : params.entrySet()) {
-                if (param.getKey() == "manufacture") 
-                    checked &= elem.getManufacture().toLowerCase().contains(param.getValue().toLowerCase());
-                if (param.getKey() == "screenSize") 
-                    checked &= (elem.getScreenSize() >= Double.parseDouble(param.getValue()));
-                if (param.getKey() == "cpu") 
-                    checked &= (elem.getCpu().toLowerCase().contains(param.getValue().toLowerCase()));
-                if (param.getKey() == "ram") 
-                    checked &= (elem.getRam() >= Integer.parseInt(param.getValue()));
-                if (param.getKey() == "storage") 
-                    checked &= (elem.getStorage() >= Integer.parseInt(param.getValue()));
-                if (param.getKey() == "os") 
-                    checked &= elem.getOs().toLowerCase().contains(param.getValue().toLowerCase());   
-                if (param.getKey() == "weight") 
-                    checked &= (elem.getWeight() <= Double.parseDouble(param.getValue()));
-                if (param.getKey() == "color") 
-                    checked &= elem.getColor().toLowerCase().contains(param.getValue().toLowerCase());
+                switch (param.getKey()) {
+                    case "manufacture": checked &= elem.getManufacture().toLowerCase().contains(param.getValue().toLowerCase()); break;
+                    case "screenSize": checked &= (elem.getScreenSize() >= Double.parseDouble(param.getValue())); break;
+                    case "cpu": checked &= (elem.getCpu().toLowerCase().contains(param.getValue().toLowerCase())); break;
+                    case "ram": checked &= (elem.getRam() >= Integer.parseInt(param.getValue())); break;
+                    case "storage": checked &= (elem.getStorage() >= Integer.parseInt(param.getValue())); break;
+                    case "os": checked &= elem.getOs().toLowerCase().contains(param.getValue().toLowerCase()); break;
+                    case "weight": checked &= (elem.getWeight() <= Double.parseDouble(param.getValue())); break;
+                    case "color": checked &= elem.getColor().toLowerCase().contains(param.getValue().toLowerCase()); break;
+                }
             }
             if (checked) filtered.add(elem);
         }
