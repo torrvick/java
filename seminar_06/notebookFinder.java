@@ -19,41 +19,6 @@ public class notebookFinder {
         iScanner.close();
     }
 
-    static List<notebook> getFromCSV(String fileName) throws Exception{
-        String workDir = System.getProperty("user.dir");
-        BufferedReader br = new BufferedReader(new FileReader(workDir.concat(fileName))) ;
-        String noteLine;
-        List<notebook> notebooks = new ArrayList<>();
-        while((noteLine=br.readLine())!=null){  
-            String noteArr[] = noteLine.split(";"); 
-
-            String manufacture = noteArr[0];
-            String model = noteArr[1];
-            double screenSize = Double.parseDouble(noteArr[2]);
-            String cpu = noteArr[3];
-            int ram = Integer.parseInt(noteArr[4]);
-            int storage = Integer.parseInt(noteArr[5]);
-            String os = noteArr[6];
-            double weight = Double.parseDouble(noteArr[7]);
-            String color = noteArr[8];
-
-            notebook nb = new notebook();
-            nb.setManufacture(manufacture);
-            nb.setModel(model);
-            nb.setScreenSize(screenSize);
-            nb.setCpu(cpu);
-            nb.setRam(ram);
-            nb.setStorage(storage);
-            nb.setOs(os);
-            nb.setWeight(weight);
-            nb.setColor(color);
-
-        notebooks.add(nb);
-        }
-        br.close();
-        return notebooks;
-    }
-
     static void showFiltered(List<notebook> notebooks, HashMap<String,String> params, String header) throws Exception{
         List<notebook> filtered = filterNotebooks(notebooks, params);
         int rowsCount = 0;
@@ -115,7 +80,7 @@ public class notebookFinder {
     }
 
     static void mainMenu() throws Exception{
-        List<notebook> notebooks = getFromCSV("/seminar_06/laptops.csv");
+        List<notebook> notebooks = notebook.getFromCSV("/seminar_06/laptops.csv");
         HashMap<String,String> params = new HashMap<String,String>();
 
         String header = "Выбранные фильтры:\n";
