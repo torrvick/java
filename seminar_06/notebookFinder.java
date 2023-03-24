@@ -113,7 +113,7 @@ public class notebookFinder {
                 if (param.getKey() == "weight") 
                     checked &= (elem.getWeight() <= Double.parseDouble(param.getValue()));
                 if (param.getKey() == "color") 
-                    checked &= elem.getColor().toLowerCase().equals(param.getValue().toLowerCase());
+                    checked &= elem.getColor().toLowerCase().contains(param.getValue().toLowerCase());
             }
             if (checked) filtered.add(elem);
         }
