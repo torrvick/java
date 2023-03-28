@@ -1,4 +1,4 @@
-package seminar_06;
+package notebookFinder;
 
 import java.util.HashMap;
 import java.util.List;
@@ -53,7 +53,7 @@ public class notebookFinder {
     }
 
     static void mainMenu() throws Exception{
-        List<notebook> notebooks = notebook.getFromCSV("/seminar_06/laptops.csv");
+        List<notebook> notebooks = notebook.getFromCSV("/notebookFinder/laptops.csv");
         HashMap<String,String> params = new HashMap<String,String>();
 
         String header = "Выбранные фильтры:\n";

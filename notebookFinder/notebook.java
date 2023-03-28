@@ -1,4 +1,4 @@
-package seminar_06;
+package notebookFinder;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
