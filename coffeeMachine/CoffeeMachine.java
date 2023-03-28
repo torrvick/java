@@ -11,9 +11,9 @@ public class CoffeeMachine {
 
     public CoffeeMachine() {
         this.reciepsList = new ArrayList<Coffee>();
-        balance = 0;
-        totalWater = 100000;
-        totalMilk = 10000;
+        this.balance = 0;
+        this.totalWater = 100000;
+        this.totalMilk = 10000;
     }
     public CoffeeMachine addReceipe(Coffee receipe) {
         reciepsList.add(receipe);
@@ -31,9 +31,11 @@ public class CoffeeMachine {
     public void sellCoffee(String name) {
         for (Coffee coffee : reciepsList) {
             if (coffee.getName().equals(name)) {
-                if (balance > coffee.getPrice()) {
+                if (this.balance > coffee.getPrice()) {
                     System.out.println("Вы купили " + coffee.getName());
-                    
+                    this.balance -= coffee.getPrice();
+                    this.totalWater -= coffee.getVolume();
+                    // this.totalMilk -= 
                 } else {
                     System.out.println("Недостаточно средств");
                 }
