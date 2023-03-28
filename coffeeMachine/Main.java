@@ -1,5 +1,7 @@
 package coffeeMachine;
 
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         CoffeeMachine machine = new CoffeeMachine();
@@ -11,9 +13,15 @@ public class Main {
                 .addReceipe(new MilkCoffee("Маккиато большой", 400, 90, 150, 2))
                 .addReceipe(new MilkCoffee("Маккиато маленький", 200, 90, 120, 2));
         
-        System.out.println(machine);
-        System.out.println();
-        machine.sellCoffee("yu");
-       
+        // System.out.println(machine);
+        // System.out.println();
+        // machine.insertCoin(400);
+        // machine.sellCoffee("Маккиато большой");
+        List<Coffee> coffeeList = machine.getList();
+        for (Coffee item : coffeeList) {
+            System.out.println(item);
+        }
+
+
     }
 }
