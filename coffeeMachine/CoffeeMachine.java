@@ -58,30 +58,30 @@ public class CoffeeMachine {
     }
 
     public void sellCoffee(int choice) {
-        if (!this.maitenanceMode){
-            if (!reciepsList.containsKey(choice)) {
-                this.systemMessage = "\nНекорректный номер напитка\n";
-            } else {
-                Coffee coffee = reciepsList.get(choice);
-                if (this.balance > coffee.getPrice()) {
-                    this.systemMessage = "\nВы купили " + coffee.getName() +"\n";
-                    this.balance -= coffee.getPrice();
-                    if (coffee instanceof MilkCoffee) {
-                        MilkCoffee item = (MilkCoffee)coffee;
-                        this.totalWater -= item.getVolume() - milkVolume(item.getVolume(),item.getMilkRatio());
-                        this.totalMilk -= milkVolume(item.getVolume(),item.getMilkRatio());
-                    } else {
-                        this.totalWater -= coffee.getVolume();
-                    }
-                    if (this.totalWater < 500 || this.totalMilk < 500) {
-                        this.maitenanceMode = true;
-                    }
-                } else {
-                    this.systemMessage = "\nНедостаточно средств\n";
-                }
-            }
-        } else {
+        if (this.maitenanceMode) {
             this.systemMessage = "\nИзвините, аппарат временно не работает\n";
+            return;
+        }
+        if (!reciepsList.containsKey(choice)) {
+            this.systemMessage = "\nНекорректный номер напитка\n";
+            return;
+        }
+        Coffee coffee = reciepsList.get(choice);
+        if (this.balance < coffee.getPrice()) {
+            this.systemMessage = "\nНедостаточно средств\n";
+            return;
+        }
+        this.systemMessage = "\nВы купили " + coffee.getName() +"\n";
+        this.balance -= coffee.getPrice();
+        if (coffee instanceof MilkCoffee) {
+            MilkCoffee item = (MilkCoffee)coffee;
+            this.totalWater -= item.getVolume() - milkVolume(item.getVolume(),item.getMilkRatio());
+            this.totalMilk -= milkVolume(item.getVolume(),item.getMilkRatio());
+        } else {
+            this.totalWater -= coffee.getVolume();
+        }
+        if (this.totalWater < 500 || this.totalMilk < 500) {
+            this.maitenanceMode = true;
         }
     }
 
