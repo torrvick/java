@@ -7,33 +7,34 @@ public class Main {
     public static void main(String[] args) throws Exception {
         CoffeeMachine machine = new CoffeeMachine();
         startMachine(machine);
-        HashMap<Integer, Coffee> coffeeMap = machine.getList();
+        HashMap<Integer, Coffee> productMap = machine.getList();
         StringBuilder outputString = new StringBuilder();
-        for (HashMap.Entry<Integer, Coffee> item : coffeeMap.entrySet()){
+        for (HashMap.Entry<Integer, Coffee> item : productMap.entrySet()){
             int id = item.getKey();
-            Coffee coffee = item.getValue();
-            outputString.append(String.format("%s: %-20s %5sмл - %6s р.\n", id, coffee.getName(), coffee.getVolume(), coffee.getPrice()));
+            Coffee product = item.getValue();
+            // outputString.append(String.format("%s: %-20s %5sмл - %6s р.\n", id, product.getName(), product.getVolume(), product.getPrice()));
+            // System.out.println(product.prepare());
         }
         Scanner in = new Scanner(System.in);
-        while (true) {
-            if (machine.isReady()) {
-                mainMenu(machine, outputString.toString());
-                System.out.print("Введите количество монет: ");
-                String coins = in.nextLine();
-                if (coins != "") {
-                    machine.insertCoin(Integer.parseInt(coins));
-                }
-                mainMenu(machine, outputString.toString());
-                System.out.print("Введите номер напитка: ");
-                int CoffeeID = Integer.parseInt(in.nextLine());
-                machine.sellCoffee(CoffeeID);
+        // while (true) {
+        //     if (machine.isReady()) {
+        //         mainMenu(machine, outputString.toString());
+        //         System.out.print("Введите количество монет: ");
+        //         String coins = in.nextLine();
+        //         if (coins != "") {
+        //             machine.insertCoin(Integer.parseInt(coins));
+        //         }
+        //         mainMenu(machine, outputString.toString());
+        //         System.out.print("Введите номер товара: ");
+        //         int productID = Integer.parseInt(in.nextLine());
+        //         machine.sellProduct(productID);
                 
-            } else {
-                mainMenu(machine, outputString.toString());
-                System.out.print("Извините, аппарат временно не работает");
-                in.nextLine();
-            }
-        }
+        //     } else {
+        //         mainMenu(machine, outputString.toString());
+        //         System.out.print("Извините, аппарат временно не работает");
+        //         in.nextLine();
+        //     }
+        // }
     }
 
     private static void mainMenu(CoffeeMachine machine, String body) throws Exception {
@@ -48,12 +49,12 @@ public class Main {
     }
 
     private static void startMachine(CoffeeMachine machine) {
-        machine.addReceipe(new Coffee("Американо большой", 400, 90, 100))
-                .addReceipe(new Coffee("Американо маленький", 200, 90, 80))
-                .addReceipe(new Coffee("Эспрессо", 50, 90, 150))
-                .addReceipe(new MilkCoffee("Капучино большой", 400, 90, 120, 3))
-                .addReceipe(new MilkCoffee("Капучино маленький", 200, 90, 100, 3))
-                .addReceipe(new MilkCoffee("Маккиато большой", 400, 90, 150, 2))
-                .addReceipe(new MilkCoffee("Маккиато маленький", 200, 90, 120, 2));
+        machine.addProduct(new Coffee("Американо большой", 100, 400))
+                .addProduct(new Coffee("Американо маленький", 80, 200))
+                .addProduct(new Coffee("Эспрессо", 150, 50))
+                .addProduct(new MilkCoffee("Капучино большой", 120, 400, 3))
+                .addProduct(new MilkCoffee("Капучино маленький",100, 200, 3))
+                .addProduct(new MilkCoffee("Маккиато большой", 150, 400, 2))
+                .addProduct(new MilkCoffee("Маккиато маленький", 120, 200, 2));
     }
 }

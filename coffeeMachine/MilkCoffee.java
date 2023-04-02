@@ -1,15 +1,19 @@
 package coffeeMachine;
 
-public class MilkCoffee extends Coffee {
+public class MilkCoffee extends Coffee implements Chocable{
     private int milkRatio;
 
-    public MilkCoffee (String name, int volume, int temperature, double price, int milkRatio) {
-        super(name, volume, temperature, price);
+    public MilkCoffee (String name, double price, int volume, int milkRatio) {
+        super(name, price, volume);
         this.milkRatio = milkRatio;
     }
 
     public int getMilkRatio() {
         return this.milkRatio;
+    }
+
+    public void addChocolate() {
+        // Здесь инструкции для посыпки шоколадной крошкой:
     }
 
     @Override

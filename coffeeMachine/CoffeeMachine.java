@@ -3,7 +3,7 @@ package coffeeMachine;
 import java.util.HashMap;
 
 public class CoffeeMachine {
-    private HashMap<Integer, Coffee> reciepsList;
+    private HashMap<Integer, Coffee> productList;
     private double balance;
     private int totalWater;
     private int totalMilk;
@@ -12,7 +12,7 @@ public class CoffeeMachine {
     private String systemMessage;
 
     public CoffeeMachine() {
-        this.reciepsList = new HashMap<Integer, Coffee>();
+        this.productList = new HashMap<Integer, Coffee>();
         this.balance = 0;
         this.totalWater = 1000;
         this.totalMilk = 1000;
@@ -20,8 +20,8 @@ public class CoffeeMachine {
         this.maitenanceMode = false;
         this.systemMessage = "";
     }
-    public CoffeeMachine addReceipe(Coffee receipe) {
-        this.reciepsList.put(++id, receipe);
+    public CoffeeMachine addProduct(Coffee receipe) {
+        this.productList.put(++id, receipe);
         return this;
     }
 
@@ -35,7 +35,7 @@ public class CoffeeMachine {
 
     public int getTotalMilk() {
         return this.totalMilk;
-    }
+    }       
 
     public String getSystemMessage() {
         return this.systemMessage;
@@ -54,31 +54,32 @@ public class CoffeeMachine {
     }
 
     public HashMap<Integer, Coffee> getList() {
-        return this.reciepsList;
+        return this.productList;
     }
 
-    public void sellCoffee(int choice) {
+    public void sellProduct(int choice) {
         if (this.maitenanceMode) {
             this.systemMessage = "\nИзвините, аппарат временно не работает\n";
             return;
         }
-        if (!reciepsList.containsKey(choice)) {
+        if (!productList.containsKey(choice)) {
             this.systemMessage = "\nНекорректный номер напитка\n";
             return;
         }
-        Coffee coffee = reciepsList.get(choice);
-        if (this.balance < coffee.getPrice()) {
+        Coffee product = productList.get(choice);
+        if (this.balance < product.getPrice()) {
             this.systemMessage = "\nНедостаточно средств\n";
             return;
         }
-        this.systemMessage = "\nВы купили " + coffee.getName() +"\n";
-        this.balance -= coffee.getPrice();
-        if (coffee instanceof MilkCoffee) {
-            MilkCoffee item = (MilkCoffee)coffee;
+        this.systemMessage = "\nВы купили " + product.getName() +"\n";
+        product.prepare();
+        this.balance -= product.getPrice();
+        if (product instanceof MilkCoffee) {
+            MilkCoffee item = (MilkCoffee)product;
             this.totalWater -= item.getVolume() - milkVolume(item.getVolume(),item.getMilkRatio());
             this.totalMilk -= milkVolume(item.getVolume(),item.getMilkRatio());
         } else {
-            this.totalWater -= coffee.getVolume();
+            this.totalWater -= product.getVolume();
         }
         if (this.totalWater < 500 || this.totalMilk < 500) {
             this.maitenanceMode = true;
@@ -88,10 +89,10 @@ public class CoffeeMachine {
     @Override
     public String toString() {
         StringBuilder outputString = new StringBuilder();
-        for (HashMap.Entry<Integer, Coffee> receipe: reciepsList.entrySet()){
-            outputString.append(receipe.getKey());
+        for (HashMap.Entry<Integer, Coffee> product: productList.entrySet()){
+            outputString.append(product.getKey());
             outputString.append(": ");
-            outputString.append(receipe.getValue());
+            outputString.append(product.getValue());
             outputString.append("\n");
         }
         return outputString.toString();
