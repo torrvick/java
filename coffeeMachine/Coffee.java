@@ -6,13 +6,9 @@ public class Coffee extends Drink{
         super(name, price, volume);
     }
 
-    private void makeCoffee() {
+    public void prepare() {
         // Здесь инструкции для приготовления кофе:
         // Намолоть зерна, разогреть воду, приготовить под давлением
-    }
-
-    public void prepare() {
-        makeCoffee(); 
     }
 
 }

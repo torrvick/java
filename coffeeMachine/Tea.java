@@ -6,12 +6,9 @@ public class Tea extends Drink{
         super(name, price, volume);
     }
 
-    private void makeTea() {
+    public void prepare() {
         // Здесь инструкции для приготовления чая:
         // Взять нужный чай, залить кипятком
     }
 
-    public void prepare() {
-        makeTea();
-    }
 }

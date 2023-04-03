@@ -13,7 +13,7 @@ public class MilkCoffee extends Coffee implements Chocable{
     }
 
     public void addChocolate() {
-        // Здесь инструкции для посыпки шоколадной крошкой:
+        // Здесь инструкции для посыпки шоколадной крошкой
     }
 
     @Override
