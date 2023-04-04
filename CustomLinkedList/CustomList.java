@@ -1,12 +1,9 @@
 package CustomLinkedList;
 
-import java.util.Iterator;
-
-public class CustomList implements Iterable<Node>{
+public class CustomList {
     private Node last = null;
     private Node first = null;
     private int size = 0;
-
 
     public void add(int data) {
         Node elem = new Node(data);
@@ -28,7 +25,7 @@ public class CustomList implements Iterable<Node>{
         }
     }
 
-    public class Node {
+    private class Node {
         private int data;
         private Node next;
     
@@ -48,8 +45,6 @@ public class CustomList implements Iterable<Node>{
             this.next = next;
         }
         
-        
-
         @Override
         public String toString() {
             return "{" +
@@ -60,27 +55,6 @@ public class CustomList implements Iterable<Node>{
 
     }
 
-    @Override
-        public Iterator<Node> iterator() {
-            return new Iterator<Node>() {
-                int counter = 0;
-                Node currNode = first;
-                @Override
-                public boolean hasNext() {
-                    if (currNode != null) return true;
-                    return false;
-                }
-
-                @Override
-                public Node next() {
-                    return currNode.getNext();
-
-                }
-            };
-        }
-
-
-    
 }
 
 
