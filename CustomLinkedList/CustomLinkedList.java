@@ -2,12 +2,12 @@ package CustomLinkedList;
 
 import java.util.Iterator;
 
-public class CustomList<T> implements Iterable<T>{
+public class CustomLinkedList<T> implements Iterable<T>{
     private Node<T> last = null;
     private Node<T> first = null;
     private int size = 0;
 
-    public CustomList<T> add(T data) {
+    public CustomLinkedList<T> add(T data) {
         Node<T> elem = new Node<>(data);
         if (size == 0) {
             first = elem;
@@ -59,17 +59,8 @@ public class CustomList<T> implements Iterable<T>{
         public void setNext(Node<T> next) {
             this.next = next;
         }
-        
-        @Override
-        public String toString() {
-            return "{" +
-                " data='" + getData() + "'" +
-                ", next='" + getNext() + "'" +
-                "}";
     }
-
-    }
-
 }
+
 
 

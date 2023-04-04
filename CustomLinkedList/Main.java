@@ -2,7 +2,7 @@ package CustomLinkedList;
 
 public class Main {
     public static void main(String[] args) {
-        CustomList<Integer> list = new CustomList<>();
+        CustomLinkedList<Integer> list = new CustomLinkedList<>();
         list.add(0)
             .add(2)
             .add(4)
