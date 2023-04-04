@@ -7,7 +7,7 @@ public class CustomList<T> implements Iterable<T>{
     private Node<T> first = null;
     private int size = 0;
 
-    public void add(T data) {
+    public CustomList<T> add(T data) {
         Node<T> elem = new Node<>(data);
         if (size == 0) {
             first = elem;
@@ -16,15 +16,7 @@ public class CustomList<T> implements Iterable<T>{
         }
         last = elem;
         size++;
-    }
-    
-    public void print() {
-        Node<T> currNode = first; 
-        System.out.print("CustomList: "); 
-        while (currNode != null) { 
-            System.out.print(currNode.getData() + " "); 
-            currNode = currNode.getNext(); 
-        }
+        return this;
     }
 
     @Override
