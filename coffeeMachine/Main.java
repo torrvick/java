@@ -17,10 +17,8 @@ public class Main {
                 outputString.append(String.format("%2s: %-22s %5sмл - %5s р.\n", id, drink.getName(), drink.getVolume(), drink.getPrice()));
             }
             if (product instanceof Food) {
-                // Drink drink = (Drink) product;
                 outputString.append(String.format("%2s: %-29s  - %5s р.\n", id, product.getName(), product.getPrice()));
             }
-            // System.out.println(product.prepare());
         }
         Scanner in = new Scanner(System.in);
 
@@ -49,7 +47,6 @@ public class Main {
                 }
             
             if (product instanceof Heateable) {
-                // mainMenu(machine, outputString.toString());
                 System.out.print("Желаете разогреть? Y/n:");
                 String answer = in.nextLine();
                 if (answer == "" || answer.startsWith("Y")) {
@@ -59,7 +56,6 @@ public class Main {
             }
 
             if (product instanceof Chocable) {
-                // mainMenu(machine, outputString.toString());
                 System.out.print("Желаете добавить шоколада? Y/n:");
                 String answer = in.nextLine();
                 if (answer == "" || answer.startsWith("Y")) {
@@ -72,8 +68,6 @@ public class Main {
             in.nextLine();
         }
     }
-
-    // private static vois heatM
 
     private static void mainMenu(CoffeeMachine machine, String body) throws Exception {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
