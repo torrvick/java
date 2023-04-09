@@ -10,10 +10,6 @@ protected static Random rnd = new Random();
         this.shield = shield;
     }
 
-    public Warrior(String name, int hp, T weapon) {
-        this(name, hp, weapon, null);
-        this.shield = new ShieldNone();
-    }
     public int harm(){
         int damage;
         damage = rnd.nextInt(weapon.damage()+1);
