@@ -10,16 +10,30 @@ public class Battle {
     public Warrior run() {
         while (true) {
             int attack = attacker.harm();
-            defender.reduceHp(attack);
-            System.out.printf("Воин %s наносит %d очков урона \nУ воина %s осталось %d hp\n", attacker.getName(), attack, defender.getName(), defender.getHp());
+            int defence = defender.defence();
+            int totalHarm = attack - defence;
+            if (totalHarm < 0 ) totalHarm = 0;
+            defender.reduceHp(totalHarm);
+            System.out.printf("Воин %s наносит %s очков атаки \n" + 
+                                "Щит отражает %s очков\n" + 
+                                "Воин %s получает %s очков урона\n" + 
+                                "У воина %s осталось %s hp\n\n", 
+                                attacker.getName(), attack, defence, defender.getName(), totalHarm, defender.getName(), defender.getHp());
             if (!defender.isAlive()){
                 System.out.printf("\nВоин %s погиб\n\n", defender.getName());
                 System.out.printf("Победитель: \n%s\n", attacker);
                 return attacker;
             }
-            int response = defender.harm();
-            attacker.reduceHp(response);
-            System.out.printf("Воин %s дал в ответку на %d очков урона \nУ воина %s осталось %d hp\n", defender.getName(), response, attacker.getName(), attacker.getHp());
+            attack = defender.harm();
+            defence = attacker.defence();
+            totalHarm = attack - defence;
+            if (totalHarm < 0 ) totalHarm = 0;
+            attacker.reduceHp(totalHarm);
+            System.out.printf("Воин %s наносит %s очков атаки \n" + 
+                                "Щит отражает %s очков\n" + 
+                                "Воин %s получает %s очков урона\n" + 
+                                "У воина %s осталось %s hp\n\n", 
+                                defender.getName(), attack, defence, attacker.getName(), totalHarm, attacker.getName(), attacker.getHp());
             if (!attacker.isAlive()){
                 System.out.printf("\nВоин %s погиб\n\n", attacker.getName());
                 System.out.printf("Победитель: \n%s\n", defender);

@@ -16,6 +16,12 @@ protected static Random rnd = new Random();
         return damage;
     }
 
+    public int defence(){
+        int defence;
+        defence = shield.reduceDamage();
+        return defence;
+    }
+
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
