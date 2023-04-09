@@ -21,20 +21,33 @@ public class Team<T extends Personage> implements Iterable<T>{
             res.append(personage)
                     .append("\n");
         }
-        res.append(String.format("Максимальная дальность: %d", maxRange()));
+        res.append(String.format("Максимальная дальность: %d\n", maxRange()));
+        res.append(String.format("Минимальный щит: %d\n", minShield()));
         return res.toString();
     }
 
     public int maxRange (){
         int max = 0;
-        for (T pers:this) {
+        for (T pers : this) {
             if (pers instanceof Archer){
                 Archer archer = (Archer) pers;
-                if(archer.range()>max){
+                if(archer.range() > max){
                     max= archer.range();
                 }
             }
         }
         return max;
+    }
+
+    public int minShield (){
+        int min = ((Warrior)personages.get(0)).defence();
+        for (T pers : this) {
+            if (pers instanceof Warrior){
+                if(((Warrior)pers).defence() < min){
+                    min = ((Warrior)pers).defence();
+                }
+            }
+        }
+        return min;
     }
 }

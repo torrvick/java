@@ -1,5 +1,5 @@
-public class Knight extends Warrior<Knife, Shield>{
-    public Knight(String name, int hp, Knife weapon, Shield shield) {
+public class Knight extends Warrior<Sword, Shield>{
+    public Knight(String name, int hp, Sword weapon, Shield shield) {
         super(name, hp, weapon, shield);
     }
 

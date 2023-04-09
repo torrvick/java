@@ -1,22 +1,18 @@
 public class Main {
     public static void main(String[] args) {
-        Team<Archer> archers = new Team<>();
-        // Team<Thief> thiefTeam = new Team<>();
-        archers.addPers(new Archer("Робин", 100, new Bow(20), new ShieldLight()))
-                .addPers(new Archer("Гуд", 100, new Bow(15), new ShieldLight()));
-        // thiefTeam.addPers(new Thief("Джек", 150, new Knife()))
-        //         .addPers(new Thief("Потрошитель", 150, new Knife()));
-        System.out.println(archers);
-        System.out.println();
-        // System.out.println(thiefTeam);
+        // Team<Archer> archers = new Team<>();
+        // archers.addPers(new Archer("Робин", 100, new Bow(20), new ShieldLight()))
+        //         .addPers(new Archer("Гуд", 100, new Bow(15), new ShieldNone()));
+        // System.out.println(archers);
+        // System.out.println();
 
-        Archer robin = new Archer("Робин", 100, new Bow(20), new ShieldLight());
-        Archer gud = new Archer("Гуд", 100, new Bow(15), new ShieldLight());
+        Knight knight1 = new Knight("Ланселот", 150, new Sword(), new ShieldLight());
+        Knight knight2 = new Knight("Король Артур", 150, new Sword(), new ShieldHeavy());
+        Team<Knight> knights = new Team<>();
+        knights.addPers(knight1).addPers(knight2);
+        System.out.println(knights);
 
-        Thief a = new Thief("Джек", 15, new Knife(), new ShieldLight());
-        Thief b = new Thief("Вася", 15, new Knife(), new ShieldLight());
-        // Battle fight = new Battle(robin, gud);
-        Battle fight = new Battle(a, b);
-        fight.run();
+        Battle fight = new Battle(knight1, knight2);
+        fight.fight();
     }
 }
