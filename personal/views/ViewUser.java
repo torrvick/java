@@ -30,13 +30,15 @@ public class ViewUser {
                         break;
                     case READ:
                         read();
-
+                        break;
+                    case DELETE:
+                        delete();
                         break;
                     case LIST:
                         list();
                         break;
                     case UPDATE:
-                        updateUser();
+                        update();
                         break;
                 }
             } catch (Exception e) {
@@ -45,7 +47,18 @@ public class ViewUser {
         }
     }
 
-    private void updateUser() throws Exception {
+    private void delete() throws Exception {
+        String id = prompt("Идентификатор пользователя: ");
+        User user = userController.readUser(id);
+        System.out.println(user);
+        System.out.println();
+        String answer = prompt("Вы уверены? [y/N] ");
+        if (answer.equals("y")) {
+            userController.deleteUser(user);
+        }
+        System.out.println();
+    }
+    private void update() throws Exception {
         String id = prompt("Идентификатор пользователя: ");
         User user = userController.readUser(id);
         System.out.println(user);
@@ -54,6 +67,7 @@ public class ViewUser {
         String lastName = prompt("Фамилия: ");
         String phone = prompt("Номер телефона: ");
         userController.updateUser(new User(id, firstName, lastName, phone));
+        System.out.println();
     }
 
     private void create() {
@@ -61,6 +75,7 @@ public class ViewUser {
         String lastName = prompt("Фамилия: ");
         String phone = prompt("Номер телефона: ");
         userController.saveUser(new User(firstName, lastName, phone));
+        System.out.println();
     }
 
     private void read() throws Exception {

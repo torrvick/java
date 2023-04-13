@@ -27,13 +27,13 @@ public class FileOperationImpl implements FileOperation {
             BufferedReader reader = new BufferedReader(fr);
             // считаем сначала первую строку
             String line = reader.readLine();
-            if (line != null) {
+            if (line != null && line.length() > 0){ 
                 lines.add(line);
             }
             while (line != null) {
                 // считываем остальные строки в цикле
                 line = reader.readLine();
-                if (line != null) {
+                if (line != null && line.length() > 0) {
                     lines.add(line);
                 }
             }

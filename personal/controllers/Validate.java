@@ -1,11 +1,10 @@
 package personal.controllers;
 
 import personal.model.User;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class Validat {
+public class Validate {
     public void validate(User user) {
         if (!pattern.matcher(user.getFirstName()).find()) {
             throw new RuntimeException("Имя пользователя не может быть пустым");

@@ -56,9 +56,14 @@ public class RepositoryFile implements Repository {
                 item.setFirstName(user.getFirstName());
                 item.setLastName(user.getLastName());
                 item.setPhone(user.getPhone());
-
             }
         }
+        saveUser(users);
+    }
+
+    public void deleteUser(User user) {
+        List<User> users = getAllUsers();
+        users.removeIf(item -> item.getId().equals(user.getId()));
         saveUser(users);
     }
 }

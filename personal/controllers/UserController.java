@@ -7,7 +7,7 @@ import java.util.List;
 
 public class UserController {
 
-    private final Validat valid = new Validat();
+    private final Validate valid = new Validate();
     private final Repository repository;
 
     public UserController(Repository repository) {
@@ -39,6 +39,8 @@ public class UserController {
         repository.updateUser(user);
     }
 
-
+    public void deleteUser(User user){
+        repository.deleteUser(user);
+    }
 
 }
