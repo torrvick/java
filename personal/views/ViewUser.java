@@ -2,8 +2,6 @@ package personal.views;
 
 import personal.controllers.UserController;
 import personal.model.User;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
