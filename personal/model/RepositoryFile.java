@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RepositoryFile implements Repository {
-    private UserMapper mapper = new UserMapper();
+    // private UserMapper mapper = new UserMapper();
+    private UserMapper mapper;
     private FileOperation fileOperation;
 
-    public RepositoryFile(FileOperation fileOperation) {
+    public RepositoryFile(FileOperation fileOperation, String fformat) {
         this.fileOperation = fileOperation;
+        this.mapper = new UserMapper(fformat);
     }
 
     @Override

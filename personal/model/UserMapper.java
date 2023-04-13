@@ -1,23 +1,35 @@
 package personal.model;
 
 public class UserMapper {
-    private final String SEPARATOR = ";";
-    private final String LINES_SEPARATOR = "\n";
+    private String separator;
+    private String linesSeparator;
 
+    public UserMapper(String fformat) {
+        switch (fformat) {
+            case "old":
+                separator = ",";
+                linesSeparator = "";
+                break;
+            case "new":
+                separator = ";";
+                linesSeparator = "\n";
+                break;
+        }
+    }
     public String map(User user) {
         return String.format("%s%s%s%s%s%s%s%s", 
                                     user.getId(), 
-                                    SEPARATOR, 
+                                    separator, 
                                     user.getFirstName(), 
-                                    SEPARATOR, 
+                                    separator, 
                                     user.getLastName(), 
-                                    SEPARATOR, 
+                                    separator, 
                                     user.getPhone(), 
-                                    LINES_SEPARATOR);
+                                    linesSeparator);
     }
 
     public User map(String line) {
-        String[] lines = line.split(SEPARATOR);
+        String[] lines = line.split(separator);
         return new User(lines[0], lines[1], lines[2], lines[3]);
     }
 }
