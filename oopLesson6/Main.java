@@ -11,8 +11,5 @@ public class Main{
 		Report reportPrinter = new ReportPrinter();
 		reportEmail.report(user);
 		reportPrinter.report(user);
-
-		Report reportDB = new ReportDB();
-        reportDB.report(user);
 	}
 }
