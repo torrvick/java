@@ -51,6 +51,7 @@ public class ViewCalculator {
     //     System.out.print(message);
     //     return Integer.parseInt(in.nextLine());
     // }
+    
 
     private ComplexNumber promptComplex(String message) {
         Scanner in = new Scanner(System.in);
