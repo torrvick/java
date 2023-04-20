@@ -8,18 +8,18 @@ public class CalcLogger implements Calculable{
     public CalcLogger(Calculable calculable, Loggable loggable) {
         this.calculable = calculable;
         this.loggable = loggable;
-        // loggable.log(String.format("Число %d \n", calculable.getResult()));
+        loggable.log(String.format("Число %s \n", calculable.getResult()));
     }
 
     @Override
     public Calculable add(ComplexNumber arg) {
-        // loggable.log(String.format("Прибавляем %d \n",arg));
+        loggable.log(String.format("Прибавляем %s \n",arg));
         return calculable.add(arg);
     }
 
     @Override
     public Calculable sub(ComplexNumber arg) {
-        // loggable.log(String.format("Умножаем на %d \n",arg));
+        loggable.log(String.format("Вычитаем %s \n",arg));
         return calculable.sub(arg);
     }
 
@@ -27,7 +27,7 @@ public class CalcLogger implements Calculable{
     @Override
     public ComplexNumber getResult() {
         ComplexNumber res = calculable.getResult();
-        // loggable.log(String.format("Получили результат: %d \n", res));
+        loggable.log(String.format("Получили результат: %s \n", res));
         return res;
     }
 

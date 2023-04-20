@@ -12,7 +12,8 @@ public class ComplexNumber {
     public ComplexNumber add(ComplexNumber other) {
         int real = this.realPart + other.realPart;
         int imaginary = this.imaginaryPart + other.imaginaryPart;
-        return new ComplexNumber(real, imaginary);
+        ComplexNumber temp = new ComplexNumber(real, imaginary);
+        return temp;
     }
 
     public ComplexNumber sub(ComplexNumber other) {
@@ -21,22 +22,16 @@ public class ComplexNumber {
         return new ComplexNumber(real, imaginary);
     }
 
-    public ComplexNumber multiply(ComplexNumber other) {
-        int real = (this.realPart * other.realPart) - (this.imaginaryPart * other.imaginaryPart);
-        int imaginary = (this.realPart * other.imaginaryPart) + (this.imaginaryPart * other.realPart);
-        return new ComplexNumber(real, imaginary);
-    }
-
     @Override
     public String toString() {
-        if (imaginaryPart == 0) {
-            return Integer.toString(realPart);
-        } else if (realPart == 0) {
-            return Integer.toString(imaginaryPart) + "i";
-        } else if (imaginaryPart > 0) {
-            return Integer.toString(realPart) + "+" + Integer.toString(imaginaryPart) + "i";
+        if (this.imaginaryPart == 0) {
+            return Integer.toString(this.realPart);
+        } else if (this.realPart == 0) {
+            return Integer.toString(this.imaginaryPart) + "i";
+        } else if (this.imaginaryPart > 0) {
+            return Integer.toString(this.realPart) + "+" + Integer.toString(this.imaginaryPart) + "i";
         } else {
-            return Integer.toString(realPart) + Integer.toString(imaginaryPart) + "i";
+            return Integer.toString(this.realPart) + Integer.toString(this.imaginaryPart) + "i";
         }
     }
 }

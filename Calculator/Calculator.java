@@ -10,13 +10,13 @@ public final class Calculator implements Calculable {
 
     @Override
     public Calculable add(ComplexNumber arg) {
-        primaryArg.add(arg);
+        primaryArg = primaryArg.add(arg);
         return this;
     }
 
     @Override
     public Calculable sub(ComplexNumber arg) {
-        primaryArg.sub(arg);
+        primaryArg = primaryArg.sub(arg);
         return this;
     }
 
