@@ -28,7 +28,7 @@ public class ViewCalculator {
                 }
                 if (cmd.equals("=")) {
                     ComplexNumber result = calculator.getResult();
-                    System.out.printf("Результат %d\n", result);
+                    System.out.printf("Результат %s\n", result);
                     break;
                 }
             }
@@ -56,22 +56,23 @@ public class ViewCalculator {
     private ComplexNumber promptComplex(String message) {
         Scanner in = new Scanner(System.in);
         System.out.print(message);
-        int plusIndex = message.indexOf("+");
-        int minusIndex = message.indexOf("-");
-        int iIndex = message.indexOf("i");
+        String complex = in.nextLine();
+        int plusIndex = complex.indexOf("+");
+        int minusIndex = complex.indexOf("-");
+        int iIndex = complex.indexOf("i");
 
         int realPart;
         int imaginaryPart;
 
         if (plusIndex != -1) {
-            realPart = Integer.parseInt(message.substring(0, plusIndex));
-            imaginaryPart = Integer.parseInt(message.substring(plusIndex + 1, iIndex));
+            realPart = Integer.parseInt(complex.substring(0, plusIndex));
+            imaginaryPart = Integer.parseInt(complex.substring(plusIndex + 1, iIndex));
         } else if (minusIndex != -1) {
-            realPart = Integer.parseInt(message.substring(0, minusIndex));
-            imaginaryPart = Integer.parseInt(message.substring(minusIndex, iIndex));
+            realPart = Integer.parseInt(complex.substring(0, minusIndex));
+            imaginaryPart = Integer.parseInt(complex.substring(minusIndex, iIndex));
         } else {
             realPart = 0;
-            imaginaryPart = Integer.parseInt(message.substring(0, iIndex));
+            imaginaryPart = Integer.parseInt(complex.substring(0, iIndex));
         }
 
         return new ComplexNumber(realPart, imaginaryPart);
